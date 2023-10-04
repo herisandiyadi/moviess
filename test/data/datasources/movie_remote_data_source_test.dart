@@ -149,7 +149,7 @@ void main() {
 
     test('should return list of Movie Model when the response code is 200',
         () async {
-      // arrange
+      // arrang
       when(mockHttpClient
               .get(Uri.parse('$BASE_URL/movie/$tId/recommendations?$API_KEY')))
           .thenAnswer((_) async => http.Response(

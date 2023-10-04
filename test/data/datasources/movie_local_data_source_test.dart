@@ -34,6 +34,7 @@ void main() {
           .thenThrow(Exception());
       // act
       final call = dataSource.insertWatchlist(testMovieTable);
+
       // assert
       expect(() => call, throwsA(isA<DatabaseException>()));
     });

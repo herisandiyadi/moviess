@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:ditonton/data/models/movie_table.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
 import 'package:ditonton/common/failure.dart';
@@ -14,4 +15,6 @@ abstract class MovieRepository {
   Future<Either<Failure, String>> removeWatchlist(MovieDetail movie);
   Future<bool> isAddedToWatchlist(int id);
   Future<Either<Failure, List<Movie>>> getWatchlistMovies();
+  Future<void> cacheNowPlayingMovie(List<MovieTable> movies);
+  Future<List<MovieTable>> getCachedNowPlayingMovies();
 }
