@@ -26,14 +26,14 @@ void main() {
     );
   }
 
-group('Detail TV Show Page : ', () {
+  group('Detail TV Show Page : ', () {
     testWidgets(
         'Wathclist button should display check icon when movie is added to watchlist',
         (widgetTester) async {
       when(mockNotifier.tvState).thenReturn(RequestState.Loaded);
       when(mockNotifier.tvDetail).thenReturn(testTVDetail);
-      
-     
+
+      when(mockNotifier.recomendationState).thenReturn(RequestState.Loaded);
 
       when(mockNotifier.tvRecomendations).thenReturn(<Tv>[]);
       when(mockNotifier.isAddedtoWatchList).thenReturn(true);
@@ -45,6 +45,53 @@ group('Detail TV Show Page : ', () {
 
       expect(watchlistButtonIcon, findsOneWidget);
     });
+
+    testWidgets(
+        'Watchlist button should display Snackbar when added to watchlist',
+        (widgetTester) async {
+      when(mockNotifier.tvState).thenReturn(RequestState.Loaded);
+      when(mockNotifier.tvDetail).thenReturn(testTVDetail);
+      when(mockNotifier.recomendationState).thenReturn(RequestState.Loaded);
+      when(mockNotifier.tvRecomendations).thenReturn(<Tv>[]);
+      when(mockNotifier.isAddedtoWatchList).thenReturn(false);
+      when(mockNotifier.watchlistMessage).thenReturn('Added to Watchlist');
+
+      final watchlistButton = find.byType(ElevatedButton);
+
+      await widgetTester
+          .pumpWidget(_makeTestableWidget(TvShowDetailPage(id: 1)));
+
+      expect(find.byIcon(Icons.add), findsOneWidget);
+
+      await widgetTester.tap(watchlistButton);
+      await widgetTester.pump();
+
+      expect(find.byType(SnackBar), findsOneWidget);
+      expect(find.text('Added to Watchlist'), findsOneWidget);
+    });
+
+    testWidgets(
+        'Watchlist button should display AlertDialog when add to watchlist failed',
+        (widgetTester) async {
+      when(mockNotifier.tvState).thenReturn(RequestState.Loaded);
+      when(mockNotifier.tvDetail).thenReturn(testTVDetail);
+      when(mockNotifier.recomendationState).thenReturn(RequestState.Loaded);
+      when(mockNotifier.tvRecomendations).thenReturn(<Tv>[]);
+      when(mockNotifier.isAddedtoWatchList).thenReturn(false);
+      when(mockNotifier.watchlistMessage).thenReturn('Failed');
+
+      final watchlistButton = find.byType(ElevatedButton);
+
+      await widgetTester
+          .pumpWidget(_makeTestableWidget(TvShowDetailPage(id: 1)));
+
+      expect(find.byIcon(Icons.add), findsOneWidget);
+
+      await widgetTester.tap(watchlistButton);
+      await widgetTester.pump();
+
+      expect(find.byType(AlertDialog), findsOneWidget);
+      expect(find.text('Failed'), findsOneWidget);
+    });
   });
-  
 }

@@ -137,6 +137,7 @@ class MovieList extends StatelessWidget {
     return Container(
       height: 200,
       child: ListView.builder(
+        key: ObjectKey('listview-nowplaying'),
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           final movie = movies[index];

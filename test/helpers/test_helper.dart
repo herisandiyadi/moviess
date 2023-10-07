@@ -1,3 +1,4 @@
+import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:ditonton/common/network_info.dart';
 import 'package:ditonton/data/datasources/db/database_helper.dart';
 import 'package:ditonton/data/datasources/movie_local_data_source.dart';
@@ -6,8 +7,10 @@ import 'package:ditonton/data/datasources/tv_local_data_source.dart';
 import 'package:ditonton/data/datasources/tv_remote_datasource.dart';
 import 'package:ditonton/domain/repositories/movie_repository.dart';
 import 'package:ditonton/domain/repositories/tv_repository.dart';
+import 'package:flutter/widgets.dart';
 import 'package:mockito/annotations.dart';
 import 'package:http/http.dart' as http;
+import 'package:sqflite/sqflite.dart';
 
 @GenerateMocks([
   MovieRepository,
@@ -18,6 +21,9 @@ import 'package:http/http.dart' as http;
   TVRemoteDataSource,
   TvLocalDataSource,
   NetworkInfo,
+  DataConnectionChecker,
+  Database,
+  NavigatorObserver
 ], customMocks: [
   MockSpec<http.Client>(as: #MockHttpClient)
 ])

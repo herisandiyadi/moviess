@@ -56,7 +56,7 @@ class TvDetailModel extends Equatable {
     this.lastEpisodeToAir,
     this.name,
     this.nextEpisodeToAir,
-    // this.networks,
+    //  this.networks,
     this.numberOfEpisodes,
     this.numberOfSeasons,
     this.originCountry,
