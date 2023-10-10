@@ -37,6 +37,13 @@ class MovieTable extends Equatable {
         overview: movie.overview,
       );
 
+  factory MovieTable.cache(Movie movie) => MovieTable(
+        id: movie.id,
+        title: movie.title,
+        posterPath: movie.posterPath,
+        overview: movie.overview,
+      );
+
   Map<String, dynamic> toJson() => {
         'id': id,
         'title': title,
@@ -52,5 +59,10 @@ class MovieTable extends Equatable {
       );
 
   @override
-  List<Object?> get props => [id, title, posterPath, overview];
+  List<Object?> get props => [
+        id,
+        title,
+        posterPath,
+        overview,
+      ];
 }

@@ -51,26 +51,31 @@ class MockTopRatedTvNotifier extends _i1.Mock
           Invocation.getter(#getTvTopRated),
         ),
       ) as _i2.GetTvTopRated);
+
   @override
   _i4.RequestState get state => (super.noSuchMethod(
         Invocation.getter(#state),
         returnValue: _i4.RequestState.Empty,
       ) as _i4.RequestState);
+
   @override
   List<_i5.Tv> get tvTopRated => (super.noSuchMethod(
         Invocation.getter(#tvTopRated),
         returnValue: <_i5.Tv>[],
       ) as List<_i5.Tv>);
+
   @override
   String get message => (super.noSuchMethod(
         Invocation.getter(#message),
         returnValue: '',
       ) as String);
+
   @override
   bool get hasListeners => (super.noSuchMethod(
         Invocation.getter(#hasListeners),
         returnValue: false,
       ) as bool);
+
   @override
   _i6.Future<void> fetchTopRatedTv() => (super.noSuchMethod(
         Invocation.method(
@@ -80,6 +85,7 @@ class MockTopRatedTvNotifier extends _i1.Mock
         returnValue: _i6.Future<void>.value(),
         returnValueForMissingStub: _i6.Future<void>.value(),
       ) as _i6.Future<void>);
+
   @override
   void addListener(_i7.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
@@ -88,6 +94,7 @@ class MockTopRatedTvNotifier extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void removeListener(_i7.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
@@ -96,6 +103,7 @@ class MockTopRatedTvNotifier extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void dispose() => super.noSuchMethod(
         Invocation.method(
@@ -104,6 +112,7 @@ class MockTopRatedTvNotifier extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void notifyListeners() => super.noSuchMethod(
         Invocation.method(

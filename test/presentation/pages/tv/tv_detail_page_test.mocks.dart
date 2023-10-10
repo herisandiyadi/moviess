@@ -113,6 +113,7 @@ class MockTvDetailNotifier extends _i1.Mock implements _i8.TvDetailNotifier {
           Invocation.getter(#getTvDetail),
         ),
       ) as _i2.GetTvDetail);
+
   @override
   _i3.GetTvRecomendations get getTvRecomendations => (super.noSuchMethod(
         Invocation.getter(#getTvRecomendations),
@@ -121,6 +122,7 @@ class MockTvDetailNotifier extends _i1.Mock implements _i8.TvDetailNotifier {
           Invocation.getter(#getTvRecomendations),
         ),
       ) as _i3.GetTvRecomendations);
+
   @override
   _i4.GetWatchListTVStatus get getWatchListTVStatus => (super.noSuchMethod(
         Invocation.getter(#getWatchListTVStatus),
@@ -129,6 +131,7 @@ class MockTvDetailNotifier extends _i1.Mock implements _i8.TvDetailNotifier {
           Invocation.getter(#getWatchListTVStatus),
         ),
       ) as _i4.GetWatchListTVStatus);
+
   @override
   _i5.SaveWatchlistTv get saveWatchlistTv => (super.noSuchMethod(
         Invocation.getter(#saveWatchlistTv),
@@ -137,6 +140,7 @@ class MockTvDetailNotifier extends _i1.Mock implements _i8.TvDetailNotifier {
           Invocation.getter(#saveWatchlistTv),
         ),
       ) as _i5.SaveWatchlistTv);
+
   @override
   _i6.RemoveWatchlistTv get removeWatchlistTv => (super.noSuchMethod(
         Invocation.getter(#removeWatchlistTv),
@@ -145,6 +149,7 @@ class MockTvDetailNotifier extends _i1.Mock implements _i8.TvDetailNotifier {
           Invocation.getter(#removeWatchlistTv),
         ),
       ) as _i6.RemoveWatchlistTv);
+
   @override
   _i7.TvDetail get tvDetail => (super.noSuchMethod(
         Invocation.getter(#tvDetail),
@@ -153,41 +158,49 @@ class MockTvDetailNotifier extends _i1.Mock implements _i8.TvDetailNotifier {
           Invocation.getter(#tvDetail),
         ),
       ) as _i7.TvDetail);
+
   @override
   _i9.RequestState get tvState => (super.noSuchMethod(
         Invocation.getter(#tvState),
         returnValue: _i9.RequestState.Empty,
       ) as _i9.RequestState);
+
   @override
   List<_i10.Tv> get tvRecomendations => (super.noSuchMethod(
         Invocation.getter(#tvRecomendations),
         returnValue: <_i10.Tv>[],
       ) as List<_i10.Tv>);
+
   @override
   _i9.RequestState get recomendationState => (super.noSuchMethod(
         Invocation.getter(#recomendationState),
         returnValue: _i9.RequestState.Empty,
       ) as _i9.RequestState);
+
   @override
   String get message => (super.noSuchMethod(
         Invocation.getter(#message),
         returnValue: '',
       ) as String);
+
   @override
   bool get isAddedtoWatchList => (super.noSuchMethod(
         Invocation.getter(#isAddedtoWatchList),
         returnValue: false,
       ) as bool);
+
   @override
   String get watchlistMessage => (super.noSuchMethod(
         Invocation.getter(#watchlistMessage),
         returnValue: '',
       ) as String);
+
   @override
   bool get hasListeners => (super.noSuchMethod(
         Invocation.getter(#hasListeners),
         returnValue: false,
       ) as bool);
+
   @override
   _i11.Future<void> fetchTvDetail(int? id) => (super.noSuchMethod(
         Invocation.method(
@@ -197,6 +210,7 @@ class MockTvDetailNotifier extends _i1.Mock implements _i8.TvDetailNotifier {
         returnValue: _i11.Future<void>.value(),
         returnValueForMissingStub: _i11.Future<void>.value(),
       ) as _i11.Future<void>);
+
   @override
   _i11.Future<void> addWatchlist(_i7.TvDetail? tv) => (super.noSuchMethod(
         Invocation.method(
@@ -206,6 +220,7 @@ class MockTvDetailNotifier extends _i1.Mock implements _i8.TvDetailNotifier {
         returnValue: _i11.Future<void>.value(),
         returnValueForMissingStub: _i11.Future<void>.value(),
       ) as _i11.Future<void>);
+
   @override
   _i11.Future<void> removeFromWatchlist(_i7.TvDetail? tv) =>
       (super.noSuchMethod(
@@ -216,6 +231,7 @@ class MockTvDetailNotifier extends _i1.Mock implements _i8.TvDetailNotifier {
         returnValue: _i11.Future<void>.value(),
         returnValueForMissingStub: _i11.Future<void>.value(),
       ) as _i11.Future<void>);
+
   @override
   _i11.Future<void> loadWatchlistStatus(int? id) => (super.noSuchMethod(
         Invocation.method(
@@ -225,6 +241,7 @@ class MockTvDetailNotifier extends _i1.Mock implements _i8.TvDetailNotifier {
         returnValue: _i11.Future<void>.value(),
         returnValueForMissingStub: _i11.Future<void>.value(),
       ) as _i11.Future<void>);
+
   @override
   void addListener(_i12.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
@@ -233,6 +250,7 @@ class MockTvDetailNotifier extends _i1.Mock implements _i8.TvDetailNotifier {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void removeListener(_i12.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
@@ -241,6 +259,7 @@ class MockTvDetailNotifier extends _i1.Mock implements _i8.TvDetailNotifier {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void dispose() => super.noSuchMethod(
         Invocation.method(
@@ -249,6 +268,7 @@ class MockTvDetailNotifier extends _i1.Mock implements _i8.TvDetailNotifier {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void notifyListeners() => super.noSuchMethod(
         Invocation.method(

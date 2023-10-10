@@ -142,7 +142,7 @@ final tTvShow = Tv(
 
 final testTvTable = TvTable(
   id: 1,
-  title: 'title',
+  name: 'title',
   posterPath: 'posterPath',
   overview: 'overview',
 );
@@ -151,7 +151,7 @@ final testTvMap = {
   'id': 1,
   'overview': 'overview',
   'posterPath': 'posterPath',
-  'title': 'title',
+  'name': 'title',
 };
 
 final testTVDetail = TvDetail(
@@ -177,7 +177,6 @@ final testWatchlistTV = Tv.watchlist(
 final testTvList = [tTvShow];
 
 final testTvFromCache = Tv.watchlist(
-  id: 1396,
   overview:
       "When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
   posterPath: "/3xnWaLQjelJDDF7LT1WBo6f4BRe.jpg",

@@ -1,7 +1,6 @@
 import 'package:ditonton/domain/entities/spoken_language.dart';
 import 'package:ditonton/domain/entities/tv_episode_toair.dart';
 import 'package:ditonton/domain/entities/tv_genre.dart';
-import 'package:ditonton/domain/entities/tv_network.dart';
 import 'package:ditonton/domain/entities/tv_production_country.dart';
 import 'package:ditonton/domain/entities/tv_season.dart';
 import 'package:equatable/equatable.dart';

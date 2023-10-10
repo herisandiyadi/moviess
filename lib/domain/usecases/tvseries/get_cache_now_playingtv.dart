@@ -1,4 +1,6 @@
-import 'package:ditonton/data/models/tvseries_table.dart';
+import 'package:dartz/dartz.dart';
+import 'package:ditonton/common/failure.dart';
+import 'package:ditonton/domain/entities/tv.dart';
 import 'package:ditonton/domain/repositories/tv_repository.dart';
 
 class GetCacheNowPlayingTv {
@@ -6,7 +8,7 @@ class GetCacheNowPlayingTv {
 
   GetCacheNowPlayingTv(this.repository);
 
-  Future<List<TvTable>> execute() {
+  Future<Either<Failure, List<Tv>>> execute() {
     return repository.getCachedNowPlayingTv();
   }
 }

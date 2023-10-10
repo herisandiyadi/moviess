@@ -59,6 +59,7 @@ class MockGetWatchlistTv extends _i1.Mock implements _i4.GetWatchlistTv {
           Invocation.getter(#repository),
         ),
       ) as _i2.TVRepository);
+
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.Tv>>> execute() =>
       (super.noSuchMethod(

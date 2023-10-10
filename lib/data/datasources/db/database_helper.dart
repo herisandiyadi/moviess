@@ -47,7 +47,7 @@ class DatabaseHelper {
     await db.execute(''' 
       CREATE TABLE $_tblTVWatchlist (
         id INTEGER PRIMARY KEY,
-        title TEXT,
+        name TEXT,
         overview TEXT,
         posterPath TEXT
       )
@@ -66,7 +66,7 @@ class DatabaseHelper {
     await db.execute(''' 
     CREATE TABLE $_tblCacheTv (
       id INTEGER PRIMARY KEY,
-      title TEXT,
+      name TEXT,
       overview TEXT,
       posterPath TEXT,
       category TEXT
@@ -122,6 +122,15 @@ class DatabaseHelper {
     final db = await database;
     return await db!.delete(
       _tblCache,
+      where: 'category = ?',
+      whereArgs: [category],
+    );
+  }
+
+  Future<int> clearCacheTv(String category) async {
+    final db = await database;
+    return await db!.delete(
+      _tblCacheTv,
       where: 'category = ?',
       whereArgs: [category],
     );

@@ -52,26 +52,31 @@ class MockPopularMoviesNotifier extends _i1.Mock
           Invocation.getter(#getPopularMovies),
         ),
       ) as _i2.GetPopularMovies);
+
   @override
   _i4.RequestState get state => (super.noSuchMethod(
         Invocation.getter(#state),
         returnValue: _i4.RequestState.Empty,
       ) as _i4.RequestState);
+
   @override
   List<_i5.Movie> get movies => (super.noSuchMethod(
         Invocation.getter(#movies),
         returnValue: <_i5.Movie>[],
       ) as List<_i5.Movie>);
+
   @override
   String get message => (super.noSuchMethod(
         Invocation.getter(#message),
         returnValue: '',
       ) as String);
+
   @override
   bool get hasListeners => (super.noSuchMethod(
         Invocation.getter(#hasListeners),
         returnValue: false,
       ) as bool);
+
   @override
   _i6.Future<void> fetchPopularMovies() => (super.noSuchMethod(
         Invocation.method(
@@ -81,6 +86,7 @@ class MockPopularMoviesNotifier extends _i1.Mock
         returnValue: _i6.Future<void>.value(),
         returnValueForMissingStub: _i6.Future<void>.value(),
       ) as _i6.Future<void>);
+
   @override
   void addListener(_i7.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
@@ -89,6 +95,7 @@ class MockPopularMoviesNotifier extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void removeListener(_i7.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
@@ -97,6 +104,7 @@ class MockPopularMoviesNotifier extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void dispose() => super.noSuchMethod(
         Invocation.method(
@@ -105,6 +113,7 @@ class MockPopularMoviesNotifier extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void notifyListeners() => super.noSuchMethod(
         Invocation.method(

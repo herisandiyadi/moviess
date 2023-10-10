@@ -1,5 +1,4 @@
-import 'package:ditonton/data/models/movie_table.dart';
-
+import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/repositories/movie_repository.dart';
 
 class CacheNowPlayingMovie {
@@ -7,7 +6,7 @@ class CacheNowPlayingMovie {
 
   CacheNowPlayingMovie(this.repository);
 
-  Future<void> execute(List<MovieTable> movies) {
+  Future<void> execute(List<Movie> movies) {
     return repository.cacheNowPlayingMovie(movies);
   }
 }

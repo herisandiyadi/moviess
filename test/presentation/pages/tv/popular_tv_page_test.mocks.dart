@@ -52,26 +52,31 @@ class MockPopularTVNotifier extends _i1.Mock implements _i3.PopularTVNotifier {
           Invocation.getter(#getTVSeriesPopuler),
         ),
       ) as _i2.GetTVSeriesPopuler);
+
   @override
   _i4.RequestState get state => (super.noSuchMethod(
         Invocation.getter(#state),
         returnValue: _i4.RequestState.Empty,
       ) as _i4.RequestState);
+
   @override
   List<_i5.Tv> get tvShow => (super.noSuchMethod(
         Invocation.getter(#tvShow),
         returnValue: <_i5.Tv>[],
       ) as List<_i5.Tv>);
+
   @override
   String get message => (super.noSuchMethod(
         Invocation.getter(#message),
         returnValue: '',
       ) as String);
+
   @override
   bool get hasListeners => (super.noSuchMethod(
         Invocation.getter(#hasListeners),
         returnValue: false,
       ) as bool);
+
   @override
   _i6.Future<void> fetchPopularTvShow() => (super.noSuchMethod(
         Invocation.method(
@@ -81,6 +86,7 @@ class MockPopularTVNotifier extends _i1.Mock implements _i3.PopularTVNotifier {
         returnValue: _i6.Future<void>.value(),
         returnValueForMissingStub: _i6.Future<void>.value(),
       ) as _i6.Future<void>);
+
   @override
   void addListener(_i7.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
@@ -89,6 +95,7 @@ class MockPopularTVNotifier extends _i1.Mock implements _i3.PopularTVNotifier {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void removeListener(_i7.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
@@ -97,6 +104,7 @@ class MockPopularTVNotifier extends _i1.Mock implements _i3.PopularTVNotifier {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void dispose() => super.noSuchMethod(
         Invocation.method(
@@ -105,6 +113,7 @@ class MockPopularTVNotifier extends _i1.Mock implements _i3.PopularTVNotifier {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void notifyListeners() => super.noSuchMethod(
         Invocation.method(

@@ -61,6 +61,7 @@ class MockGetTopRatedMovies extends _i1.Mock implements _i4.GetTopRatedMovies {
           Invocation.getter(#repository),
         ),
       ) as _i2.MovieRepository);
+
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.Movie>>> execute() =>
       (super.noSuchMethod(

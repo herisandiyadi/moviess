@@ -112,6 +112,7 @@ class MockMovieDetailNotifier extends _i1.Mock
           Invocation.getter(#getMovieDetail),
         ),
       ) as _i2.GetMovieDetail);
+
   @override
   _i3.GetMovieRecommendations get getMovieRecommendations =>
       (super.noSuchMethod(
@@ -121,6 +122,7 @@ class MockMovieDetailNotifier extends _i1.Mock
           Invocation.getter(#getMovieRecommendations),
         ),
       ) as _i3.GetMovieRecommendations);
+
   @override
   _i4.GetWatchListStatus get getWatchListStatus => (super.noSuchMethod(
         Invocation.getter(#getWatchListStatus),
@@ -129,6 +131,7 @@ class MockMovieDetailNotifier extends _i1.Mock
           Invocation.getter(#getWatchListStatus),
         ),
       ) as _i4.GetWatchListStatus);
+
   @override
   _i5.SaveWatchlist get saveWatchlist => (super.noSuchMethod(
         Invocation.getter(#saveWatchlist),
@@ -137,6 +140,7 @@ class MockMovieDetailNotifier extends _i1.Mock
           Invocation.getter(#saveWatchlist),
         ),
       ) as _i5.SaveWatchlist);
+
   @override
   _i6.RemoveWatchlist get removeWatchlist => (super.noSuchMethod(
         Invocation.getter(#removeWatchlist),
@@ -145,6 +149,7 @@ class MockMovieDetailNotifier extends _i1.Mock
           Invocation.getter(#removeWatchlist),
         ),
       ) as _i6.RemoveWatchlist);
+
   @override
   _i7.MovieDetail get movie => (super.noSuchMethod(
         Invocation.getter(#movie),
@@ -153,41 +158,49 @@ class MockMovieDetailNotifier extends _i1.Mock
           Invocation.getter(#movie),
         ),
       ) as _i7.MovieDetail);
+
   @override
   _i9.RequestState get movieState => (super.noSuchMethod(
         Invocation.getter(#movieState),
         returnValue: _i9.RequestState.Empty,
       ) as _i9.RequestState);
+
   @override
   List<_i10.Movie> get movieRecommendations => (super.noSuchMethod(
         Invocation.getter(#movieRecommendations),
         returnValue: <_i10.Movie>[],
       ) as List<_i10.Movie>);
+
   @override
   _i9.RequestState get recommendationState => (super.noSuchMethod(
         Invocation.getter(#recommendationState),
         returnValue: _i9.RequestState.Empty,
       ) as _i9.RequestState);
+
   @override
   String get message => (super.noSuchMethod(
         Invocation.getter(#message),
         returnValue: '',
       ) as String);
+
   @override
   bool get isAddedToWatchlist => (super.noSuchMethod(
         Invocation.getter(#isAddedToWatchlist),
         returnValue: false,
       ) as bool);
+
   @override
   String get watchlistMessage => (super.noSuchMethod(
         Invocation.getter(#watchlistMessage),
         returnValue: '',
       ) as String);
+
   @override
   bool get hasListeners => (super.noSuchMethod(
         Invocation.getter(#hasListeners),
         returnValue: false,
       ) as bool);
+
   @override
   _i11.Future<void> fetchMovieDetail(int? id) => (super.noSuchMethod(
         Invocation.method(
@@ -197,6 +210,7 @@ class MockMovieDetailNotifier extends _i1.Mock
         returnValue: _i11.Future<void>.value(),
         returnValueForMissingStub: _i11.Future<void>.value(),
       ) as _i11.Future<void>);
+
   @override
   _i11.Future<void> addWatchlist(_i7.MovieDetail? movie) => (super.noSuchMethod(
         Invocation.method(
@@ -206,6 +220,7 @@ class MockMovieDetailNotifier extends _i1.Mock
         returnValue: _i11.Future<void>.value(),
         returnValueForMissingStub: _i11.Future<void>.value(),
       ) as _i11.Future<void>);
+
   @override
   _i11.Future<void> removeFromWatchlist(_i7.MovieDetail? movie) =>
       (super.noSuchMethod(
@@ -216,6 +231,7 @@ class MockMovieDetailNotifier extends _i1.Mock
         returnValue: _i11.Future<void>.value(),
         returnValueForMissingStub: _i11.Future<void>.value(),
       ) as _i11.Future<void>);
+
   @override
   _i11.Future<void> loadWatchlistStatus(int? id) => (super.noSuchMethod(
         Invocation.method(
@@ -225,6 +241,7 @@ class MockMovieDetailNotifier extends _i1.Mock
         returnValue: _i11.Future<void>.value(),
         returnValueForMissingStub: _i11.Future<void>.value(),
       ) as _i11.Future<void>);
+
   @override
   void addListener(_i12.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
@@ -233,6 +250,7 @@ class MockMovieDetailNotifier extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void removeListener(_i12.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
@@ -241,6 +259,7 @@ class MockMovieDetailNotifier extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void dispose() => super.noSuchMethod(
         Invocation.method(
@@ -249,6 +268,7 @@ class MockMovieDetailNotifier extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   void notifyListeners() => super.noSuchMethod(
         Invocation.method(

@@ -59,6 +59,7 @@ class MockSearchTvShow extends _i1.Mock implements _i4.SearchTvShow {
           Invocation.getter(#repository),
         ),
       ) as _i2.TVRepository);
+
   @override
   set repository(_i2.TVRepository? _repository) => super.noSuchMethod(
         Invocation.setter(
@@ -67,6 +68,7 @@ class MockSearchTvShow extends _i1.Mock implements _i4.SearchTvShow {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.Tv>>> execute(String? query) =>
       (super.noSuchMethod(

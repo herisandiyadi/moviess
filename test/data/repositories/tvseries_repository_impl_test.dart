@@ -75,15 +75,22 @@ void main() {
 
   final testTvCacheMap = {
     'id': 1396,
+    'name': "Breaking Bad",
     'overview':
         "When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
     'posterPath': "/3xnWaLQjelJDDF7LT1WBo6f4BRe.jpg",
-    'title': "Breaking Bad",
   };
 
   final testTvCache = TvTable(
+    name: "Breaking Bad",
+    posterPath: "/3xnWaLQjelJDDF7LT1WBo6f4BRe.jpg",
+    overview:
+        "When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
+  );
+
+  final testTvDb = Tv(
     id: 1396,
-    title: "Breaking Bad",
+    name: "Breaking Bad",
     posterPath: "/3xnWaLQjelJDDF7LT1WBo6f4BRe.jpg",
     overview:
         "When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
@@ -108,6 +115,7 @@ void main() {
 
         verify(mockTVRemoteDataSource.getTvSeriesOnTheAir());
         final resultList = result.getOrElse(() => []);
+
         expect(resultList, tTvList);
       });
 
@@ -146,23 +154,31 @@ void main() {
         when(mockDatabaseHelper.getCacheTv('on the air'))
             .thenAnswer((_) async => [testTvCacheMap]);
         final result = await repository.getCachedNowPlayingTv();
-        expect(result, [testTvCache]);
+
+        final resultList = result.getOrElse(
+          () => [],
+        );
+
+        expect(resultList, [testTvDb]);
       });
 
       test('should throw CacheException when cache data is not exist',
           () async {
         when(mockDatabaseHelper.getCacheTv('on the air'))
-            .thenAnswer((_) async => []);
+            .thenThrow(CacheException('No Cache'));
 
-        final call = repository.getCachedNowPlayingTv();
-        expect(() => call, throwsA(isA<CacheException>()));
+        final result = await repository.getCachedNowPlayingTv();
+
+        expect(result, Left(CacheFailure('No Cache')));
       });
 
       test('should call database helper to save data', () async {
-        when(mockDatabaseHelper.clearCache('on the air'))
+        when(mockDatabaseHelper.clearCacheTv('on the air'))
             .thenAnswer((_) async => 1);
-        await repository.cacheNowPlayingTv([testTvCache]);
-        verify(mockDatabaseHelper.clearCache('on the air'));
+        await repository.cacheNowPlayingTv([testTvDb]);
+
+        verify(mockDatabaseHelper.clearCacheTv('on the air'));
+
         verify(mockDatabaseHelper
             .insertCacheTvTransaction([testTvCache], 'on the air'));
       });

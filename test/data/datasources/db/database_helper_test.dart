@@ -26,7 +26,7 @@ void main() {
   );
   final tvTable = TvTable(
     id: 1,
-    title: 'title',
+    name: 'title',
     posterPath: 'posterPath',
     overview: 'overview',
   );

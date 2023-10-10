@@ -64,6 +64,7 @@ class MockGetTvSeriesOnTheAir extends _i1.Mock
           Invocation.getter(#tvRepository),
         ),
       ) as _i2.TVRepository);
+
   @override
   set tvRepository(_i2.TVRepository? _tvRepository) => super.noSuchMethod(
         Invocation.setter(
@@ -72,6 +73,7 @@ class MockGetTvSeriesOnTheAir extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.Tv>>> execute() =>
       (super.noSuchMethod(
@@ -107,6 +109,7 @@ class MockGetTVSeriesPopuler extends _i1.Mock
           Invocation.getter(#tvRepository),
         ),
       ) as _i2.TVRepository);
+
   @override
   set tvRepository(_i2.TVRepository? _tvRepository) => super.noSuchMethod(
         Invocation.setter(
@@ -115,6 +118,7 @@ class MockGetTVSeriesPopuler extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.Tv>>> execute() =>
       (super.noSuchMethod(
@@ -149,6 +153,7 @@ class MockGetTvTopRated extends _i1.Mock implements _i9.GetTvTopRated {
           Invocation.getter(#tvRepository),
         ),
       ) as _i2.TVRepository);
+
   @override
   set tvRepository(_i2.TVRepository? _tvRepository) => super.noSuchMethod(
         Invocation.setter(
@@ -157,6 +162,7 @@ class MockGetTvTopRated extends _i1.Mock implements _i9.GetTvTopRated {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.Tv>>> execute() =>
       (super.noSuchMethod(

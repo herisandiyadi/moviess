@@ -68,6 +68,7 @@ class MockGetTvDetail extends _i1.Mock implements _i4.GetTvDetail {
           Invocation.getter(#tvRepository),
         ),
       ) as _i2.TVRepository);
+
   @override
   set tvRepository(_i2.TVRepository? _tvRepository) => super.noSuchMethod(
         Invocation.setter(
@@ -76,6 +77,7 @@ class MockGetTvDetail extends _i1.Mock implements _i4.GetTvDetail {
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i5.Future<_i3.Either<_i6.Failure, _i7.TvDetail>> execute(int? id) =>
       (super.noSuchMethod(
@@ -111,6 +113,7 @@ class MockGetTvRecomendations extends _i1.Mock
           Invocation.getter(#tvRepository),
         ),
       ) as _i2.TVRepository);
+
   @override
   set tvRepository(_i2.TVRepository? _tvRepository) => super.noSuchMethod(
         Invocation.setter(
@@ -119,6 +122,7 @@ class MockGetTvRecomendations extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i9.Tv>>> execute(int? id) =>
       (super.noSuchMethod(
@@ -154,6 +158,7 @@ class MockGetWatchListTVStatus extends _i1.Mock
           Invocation.getter(#repository),
         ),
       ) as _i2.TVRepository);
+
   @override
   _i5.Future<bool> execute(int? id) => (super.noSuchMethod(
         Invocation.method(
@@ -180,6 +185,7 @@ class MockSaveWatchlistTv extends _i1.Mock implements _i11.SaveWatchlistTv {
           Invocation.getter(#repository),
         ),
       ) as _i2.TVRepository);
+
   @override
   _i5.Future<_i3.Either<_i6.Failure, String>> execute(_i7.TvDetail? tv) =>
       (super.noSuchMethod(
@@ -214,6 +220,7 @@ class MockRemoveWatchlistTv extends _i1.Mock implements _i12.RemoveWatchlistTv {
           Invocation.getter(#repository),
         ),
       ) as _i2.TVRepository);
+
   @override
   _i5.Future<_i3.Either<_i6.Failure, String>> execute(_i7.TvDetail? tv) =>
       (super.noSuchMethod(

@@ -4,42 +4,47 @@ import 'package:ditonton/domain/entities/tv_detail.dart';
 import 'package:equatable/equatable.dart';
 
 class TvTable extends Equatable {
-  final int id;
-  final String? title;
+  final int? id;
+  final String? name;
   final String? posterPath;
   final String? overview;
 
   TvTable({
-    required this.id,
-    required this.title,
+    this.id,
+    required this.name,
     required this.posterPath,
     required this.overview,
   });
 
   factory TvTable.fromEntity(TvDetail tvDetail) => TvTable(
-        id: tvDetail.id!,
-        title: tvDetail.name,
+        id: tvDetail.id,
+        name: tvDetail.name,
         posterPath: tvDetail.posterPath,
         overview: tvDetail.overview,
       );
 
   factory TvTable.fromMap(Map<String, dynamic> map) => TvTable(
         id: map['id'],
-        title: map['title'],
+        name: map['name'],
         posterPath: map['posterPath'],
         overview: map['overview'],
       );
 
   factory TvTable.fromDTO(TvModel tv) => TvTable(
-        id: tv.id!,
-        title: tv.name,
+        name: tv.name,
         posterPath: tv.posterPath,
         overview: tv.overview,
       );
 
+  factory TvTable.cache(Tv tvshow) => TvTable(
+        name: tvshow.name,
+        posterPath: tvshow.posterPath,
+        overview: tvshow.overview,
+      );
+
   Map<String, dynamic> toJson() => {
         'id': id,
-        'title': title,
+        'name': name,
         'posterPath': posterPath,
         'overview': overview,
       };
@@ -48,13 +53,13 @@ class TvTable extends Equatable {
         id: id,
         overview: overview,
         posterPath: posterPath,
-        name: title,
+        name: name,
       );
 
   @override
   List<Object?> get props => [
         id,
-        title,
+        name,
         posterPath,
         overview,
       ];

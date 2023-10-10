@@ -30,8 +30,11 @@ class MovieRepositoryImpl implements MovieRepository {
     if (await networkInfo.isConnected) {
       try {
         final result = await remoteDataSource.getNowPlayingMovies();
-        localDataSource.cacheNowPlayingMovies(
-            result.map((e) => MovieTable.fromDTO(e)).toList());
+        localDataSource.cacheNowPlayingMovies(result.map((e) {
+          final data = MovieTable.fromDTO(e);
+
+          return data;
+        }).toList());
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
         return Left(ServerFailure(''));
@@ -145,18 +148,26 @@ class MovieRepositoryImpl implements MovieRepository {
   }
 
   @override
-  Future<void> cacheNowPlayingMovie(List<MovieTable> movies) async {
+  Future<void> cacheNowPlayingMovie(List<Movie> movies) async {
     await databaseHelper.clearCache('now playing');
-    await databaseHelper.insertCacheTransaction(movies, 'now playing');
+
+    final dataMovie = movies.map((e) => MovieTable.cache(e)).toList();
+    await databaseHelper.insertCacheTransaction(dataMovie, 'now playing');
   }
 
   @override
-  Future<List<MovieTable>> getCachedNowPlayingMovies() async {
-    final result = await databaseHelper.getCacheMovies('now playing');
-    if (result.length > 0) {
-      return result.map((e) => MovieTable.fromMap(e)).toList();
-    } else {
-      throw CacheException('Cant get the data:(');
+  Future<Either<Failure, List<Movie>>> getCachedNowPlayingMovies() async {
+    try {
+      final result = await databaseHelper.getCacheMovies('now playing');
+      final List<MovieTable> movie =
+          result.map((e) => MovieTable.fromMap(e)).toList();
+      if (result.length > 0) {
+        return Right(movie.map((e) => e.toEntity()).toList());
+      } else {
+        return Left(CacheFailure('No Cache'));
+      }
+    } on CacheException {
+      return Left(CacheFailure('No Cache'));
     }
   }
 }

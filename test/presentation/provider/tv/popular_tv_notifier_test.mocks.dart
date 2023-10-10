@@ -61,6 +61,7 @@ class MockGetTVSeriesPopuler extends _i1.Mock
           Invocation.getter(#tvRepository),
         ),
       ) as _i2.TVRepository);
+
   @override
   set tvRepository(_i2.TVRepository? _tvRepository) => super.noSuchMethod(
         Invocation.setter(
@@ -69,6 +70,7 @@ class MockGetTVSeriesPopuler extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
+
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.Tv>>> execute() =>
       (super.noSuchMethod(

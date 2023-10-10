@@ -30,8 +30,12 @@ class TvSeriesRepositoryImpl implements TVRepository {
     if (await networkInfo.isConnected) {
       try {
         final result = await tvRemoteDataSource.getTvSeriesOnTheAir();
-        tvLocalDataSource.cacheNowPlayingTvSeries(
-            result.map((e) => TvTable.fromDTO(e)).toList());
+        tvLocalDataSource.cacheNowPlayingTvSeries(result.map((e) {
+          final data = TvTable.fromDTO(e);
+
+          return data;
+        }).toList());
+
         return Right(result.map((model) => model.toEntity()).toList());
       } on ServerException {
         return Left(ServerFailure(''));
@@ -147,18 +151,25 @@ class TvSeriesRepositoryImpl implements TVRepository {
   }
 
   @override
-  Future<void> cacheNowPlayingTv(List<TvTable> tv) async {
-    await databaseHelper.clearCache('on the air');
-    await databaseHelper.insertCacheTvTransaction(tv, 'on the air');
+  Future<void> cacheNowPlayingTv(List<Tv> tv) async {
+    await databaseHelper.clearCacheTv('on the air');
+    final dataTv = tv.map((e) => TvTable.cache(e)).toList();
+    await databaseHelper.insertCacheTvTransaction(dataTv, 'on the air');
   }
 
   @override
-  Future<List<TvTable>> getCachedNowPlayingTv() async {
-    final result = await databaseHelper.getCacheTv('on the air');
-    if (result.length > 0) {
-      return result.map((e) => TvTable.fromMap(e)).toList();
-    } else {
-      throw CacheException('Cant get the data');
+  Future<Either<Failure, List<Tv>>> getCachedNowPlayingTv() async {
+    try {
+      final result = await databaseHelper.getCacheTv('on the air');
+      if (result.length > 0) {
+        final dataTv = result.map((e) => TvTable.fromMap(e)).toList();
+        final dataResult = dataTv.map((e) => e.toEntity()).toList();
+        return Right(dataResult);
+      } else {
+        return Left(CacheFailure('No Cache'));
+      }
+    } on CacheException catch (e) {
+      return Left(CacheFailure(e.message));
     }
   }
 }

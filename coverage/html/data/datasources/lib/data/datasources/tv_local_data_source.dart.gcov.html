@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2023-10-07 07:10:37</td>
+            <td class="headerValue">2023-10-10 15:36:32</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -115,17 +115,17 @@
 <span id="L53"><span class="lineNum">      53</span>              : </span>
 <span id="L54"><span class="lineNum">      54</span> <span class="tlaUNC tlaBgUNC">           0 :   @override</span></span>
 <span id="L55"><span class="lineNum">      55</span>              :   Future&lt;void&gt; cacheNowPlayingTvSeries(List&lt;TvTable&gt; tv) async {</span>
-<span id="L56"><span class="lineNum">      56</span> <span class="tlaUNC">           0 :     await databaseHelper.clearCache('now playing');</span></span>
-<span id="L57"><span class="lineNum">      57</span> <span class="tlaUNC">           0 :     await databaseHelper.insertCacheTvTransaction(tv, 'now playing');</span></span>
+<span id="L56"><span class="lineNum">      56</span> <span class="tlaUNC">           0 :     await databaseHelper.clearCache('on the air');</span></span>
+<span id="L57"><span class="lineNum">      57</span> <span class="tlaUNC">           0 :     await databaseHelper.insertCacheTvTransaction(tv, 'on the air');</span></span>
 <span id="L58"><span class="lineNum">      58</span>              :   }</span>
 <span id="L59"><span class="lineNum">      59</span>              : </span>
 <span id="L60"><span class="lineNum">      60</span> <span class="tlaUNC">           0 :   @override</span></span>
 <span id="L61"><span class="lineNum">      61</span>              :   Future&lt;List&lt;TvTable&gt;&gt; getCachedNowPlayingTv() async {</span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaUNC">           0 :     final result = await databaseHelper.getCacheTv('now playing');</span></span>
+<span id="L62"><span class="lineNum">      62</span> <span class="tlaUNC">           0 :     final result = await databaseHelper.getCacheTv('on the air');</span></span>
 <span id="L63"><span class="lineNum">      63</span> <span class="tlaUNC">           0 :     if (result.length &gt; 0) {</span></span>
 <span id="L64"><span class="lineNum">      64</span> <span class="tlaUNC">           0 :       return result.map((e) =&gt; TvTable.fromMap(e)).toList();</span></span>
 <span id="L65"><span class="lineNum">      65</span>              :     } else {</span>
-<span id="L66"><span class="lineNum">      66</span> <span class="tlaUNC">           0 :       throw (CacheException('Cant get the data: ('));</span></span>
+<span id="L66"><span class="lineNum">      66</span> <span class="tlaUNC">           0 :       throw CacheException('Cant get the data: (');</span></span>
 <span id="L67"><span class="lineNum">      67</span>              :     }</span>
 <span id="L68"><span class="lineNum">      68</span>              :   }</span>
 <span id="L69"><span class="lineNum">      69</span>              : }</span>

@@ -1,6 +1,5 @@
 import 'package:ditonton/data/models/t_episodetoair_model.dart';
 import 'package:ditonton/data/models/tv_genre_model.dart';
-import 'package:ditonton/data/models/tv_network_model.dart';
 import 'package:ditonton/data/models/tv_product_country_model.dart';
 import 'package:ditonton/data/models/tv_season_model.dart';
 import 'package:ditonton/data/models/tv_spoken_model.dart';

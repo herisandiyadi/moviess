@@ -84,6 +84,14 @@ void main() {
     title: 'Spider-Man',
   );
 
+  final testMovieDb = Movie(
+    id: 557,
+    overview:
+        'After being bitten by a genetically altered spider, nerdy high school student Peter Parker is endowed with amazing powers to become the Amazing superhero known as Spider-Man.',
+    posterPath: '/rweIrveL43TaxUN0akQEaAXL6x0.jpg',
+    title: 'Spider-Man',
+  );
+
   final tMovieModelList = <MovieModel>[tMovieModel];
   final tMovieList = <Movie>[tMovie];
 
@@ -157,23 +165,25 @@ void main() {
             .thenAnswer((_) async => [testMovieCacheMap]);
 
         final result = await repository.getCachedNowPlayingMovies();
-
-        expect(result, [testMovieCache]);
+        final resultList = result.getOrElse(
+          () => [],
+        );
+        expect(resultList, [testMovieDb]);
       });
 
       test('should throw CacheException when cache data is not exist',
           () async {
         when(mockDatabaseHelper.getCacheMovies('now playing'))
-            .thenAnswer((_) async => []);
+            .thenThrow(CacheException('No Cache'));
 
-        final call = repository.getCachedNowPlayingMovies();
-        expect(() => call, throwsA(isA<CacheException>()));
+        final result = await repository.getCachedNowPlayingMovies();
+        expect(result, Left(CacheFailure('No Cache')));
       });
 
       test('should call database helper to save data', () async {
         when(mockDatabaseHelper.clearCache('now playing'))
             .thenAnswer((_) async => 1);
-        await repository.cacheNowPlayingMovie([testMovieCache]);
+        await repository.cacheNowPlayingMovie([testMovieDb]);
         verify(mockDatabaseHelper.clearCache('now playing'));
         verify(mockDatabaseHelper
             .insertCacheTransaction([testMovieCache], 'now playing'));

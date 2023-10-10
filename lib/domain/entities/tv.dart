@@ -2,19 +2,19 @@ import 'package:equatable/equatable.dart';
 
 class Tv extends Equatable {
   Tv({
-    required this.backdropPath,
-    required this.firstAirDate,
-    required this.genreIds,
-    required this.id,
-    required this.name,
-    required this.originCountry,
-    required this.originalLanguage,
-    required this.originalName,
-    required this.overview,
-    required this.popularity,
-    required this.posterPath,
-    required this.voteAverage,
-    required this.voteCount,
+    this.backdropPath,
+    this.firstAirDate,
+    this.genreIds,
+    this.id,
+    this.name,
+    this.originCountry,
+    this.originalLanguage,
+    this.originalName,
+    this.overview,
+    this.popularity,
+    this.posterPath,
+    this.voteAverage,
+    this.voteCount,
   });
 
   String? backdropPath;
@@ -32,7 +32,7 @@ class Tv extends Equatable {
   int? voteCount;
 
   Tv.watchlist({
-    required this.id,
+    this.id,
     required this.overview,
     required this.posterPath,
     required this.name,

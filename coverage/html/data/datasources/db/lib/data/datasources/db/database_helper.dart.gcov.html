@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">39.4&nbsp;%</td>
-            <td class="headerCovTableEntry">71</td>
+            <td class="headerCovTableEntryLo">37.3&nbsp;%</td>
+            <td class="headerCovTableEntry">75</td>
             <td class="headerCovTableEntry">28</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2023-10-07 07:10:37</td>
+            <td class="headerValue">2023-10-10 15:36:32</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -109,7 +109,7 @@
 <span id="L47"><span class="lineNum">      47</span> <span class="tlaUNC">           0 :     await db.execute(''' </span></span>
 <span id="L48"><span class="lineNum">      48</span>              :       CREATE TABLE $_tblTVWatchlist (</span>
 <span id="L49"><span class="lineNum">      49</span>              :         id INTEGER PRIMARY KEY,</span>
-<span id="L50"><span class="lineNum">      50</span>              :         title TEXT,</span>
+<span id="L50"><span class="lineNum">      50</span>              :         name TEXT,</span>
 <span id="L51"><span class="lineNum">      51</span>              :         overview TEXT,</span>
 <span id="L52"><span class="lineNum">      52</span>              :         posterPath TEXT</span>
 <span id="L53"><span class="lineNum">      53</span>              :       )</span>
@@ -128,7 +128,7 @@
 <span id="L66"><span class="lineNum">      66</span> <span class="tlaUNC">           0 :     await db.execute(''' </span></span>
 <span id="L67"><span class="lineNum">      67</span>              :     CREATE TABLE $_tblCacheTv (</span>
 <span id="L68"><span class="lineNum">      68</span>              :       id INTEGER PRIMARY KEY,</span>
-<span id="L69"><span class="lineNum">      69</span>              :       title TEXT,</span>
+<span id="L69"><span class="lineNum">      69</span>              :       name TEXT,</span>
 <span id="L70"><span class="lineNum">      70</span>              :       overview TEXT,</span>
 <span id="L71"><span class="lineNum">      71</span>              :       posterPath TEXT,</span>
 <span id="L72"><span class="lineNum">      72</span>              :       category TEXT</span>
@@ -189,78 +189,87 @@
 <span id="L127"><span class="lineNum">     127</span>              :     );</span>
 <span id="L128"><span class="lineNum">     128</span>              :   }</span>
 <span id="L129"><span class="lineNum">     129</span>              : </span>
-<span id="L130"><span class="lineNum">     130</span> <span class="tlaGNC tlaBgGNC">           1 :   Future&lt;int&gt; insertWatchlist(MovieTable movie) async {</span></span>
-<span id="L131"><span class="lineNum">     131</span> <span class="tlaGNC">           1 :     final db = await database;</span></span>
-<span id="L132"><span class="lineNum">     132</span> <span class="tlaGNC">           2 :     return await db!.insert(_tblWatchlist, movie.toJson());</span></span>
-<span id="L133"><span class="lineNum">     133</span>              :   }</span>
-<span id="L134"><span class="lineNum">     134</span>              : </span>
-<span id="L135"><span class="lineNum">     135</span> <span class="tlaGNC">           1 :   Future&lt;int&gt; removeWatchlist(MovieTable movie) async {</span></span>
-<span id="L136"><span class="lineNum">     136</span> <span class="tlaGNC">           1 :     final db = await database;</span></span>
-<span id="L137"><span class="lineNum">     137</span> <span class="tlaGNC">           1 :     return await db!.delete(</span></span>
-<span id="L138"><span class="lineNum">     138</span>              :       _tblWatchlist,</span>
-<span id="L139"><span class="lineNum">     139</span>              :       where: 'id = ?',</span>
-<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">           2 :       whereArgs: [movie.id],</span></span>
-<span id="L141"><span class="lineNum">     141</span>              :     );</span>
+<span id="L130"><span class="lineNum">     130</span> <span class="tlaUNC">           0 :   Future&lt;int&gt; clearCacheTv(String category) async {</span></span>
+<span id="L131"><span class="lineNum">     131</span> <span class="tlaUNC">           0 :     final db = await database;</span></span>
+<span id="L132"><span class="lineNum">     132</span> <span class="tlaUNC">           0 :     return await db!.delete(</span></span>
+<span id="L133"><span class="lineNum">     133</span>              :       _tblCacheTv,</span>
+<span id="L134"><span class="lineNum">     134</span>              :       where: 'category = ?',</span>
+<span id="L135"><span class="lineNum">     135</span> <span class="tlaUNC">           0 :       whereArgs: [category],</span></span>
+<span id="L136"><span class="lineNum">     136</span>              :     );</span>
+<span id="L137"><span class="lineNum">     137</span>              :   }</span>
+<span id="L138"><span class="lineNum">     138</span>              : </span>
+<span id="L139"><span class="lineNum">     139</span> <span class="tlaGNC tlaBgGNC">           1 :   Future&lt;int&gt; insertWatchlist(MovieTable movie) async {</span></span>
+<span id="L140"><span class="lineNum">     140</span> <span class="tlaGNC">           1 :     final db = await database;</span></span>
+<span id="L141"><span class="lineNum">     141</span> <span class="tlaGNC">           2 :     return await db!.insert(_tblWatchlist, movie.toJson());</span></span>
 <span id="L142"><span class="lineNum">     142</span>              :   }</span>
 <span id="L143"><span class="lineNum">     143</span>              : </span>
-<span id="L144"><span class="lineNum">     144</span> <span class="tlaUNC tlaBgUNC">           0 :   Future&lt;Map&lt;String, dynamic&gt;?&gt; getMovieById(int id) async {</span></span>
-<span id="L145"><span class="lineNum">     145</span> <span class="tlaUNC">           0 :     final db = await database;</span></span>
-<span id="L146"><span class="lineNum">     146</span> <span class="tlaUNC">           0 :     final results = await db!.query(</span></span>
+<span id="L144"><span class="lineNum">     144</span> <span class="tlaGNC">           1 :   Future&lt;int&gt; removeWatchlist(MovieTable movie) async {</span></span>
+<span id="L145"><span class="lineNum">     145</span> <span class="tlaGNC">           1 :     final db = await database;</span></span>
+<span id="L146"><span class="lineNum">     146</span> <span class="tlaGNC">           1 :     return await db!.delete(</span></span>
 <span id="L147"><span class="lineNum">     147</span>              :       _tblWatchlist,</span>
 <span id="L148"><span class="lineNum">     148</span>              :       where: 'id = ?',</span>
-<span id="L149"><span class="lineNum">     149</span> <span class="tlaUNC">           0 :       whereArgs: [id],</span></span>
+<span id="L149"><span class="lineNum">     149</span> <span class="tlaGNC">           2 :       whereArgs: [movie.id],</span></span>
 <span id="L150"><span class="lineNum">     150</span>              :     );</span>
-<span id="L151"><span class="lineNum">     151</span>              : </span>
-<span id="L152"><span class="lineNum">     152</span> <span class="tlaUNC">           0 :     if (results.isNotEmpty) {</span></span>
-<span id="L153"><span class="lineNum">     153</span> <span class="tlaUNC">           0 :       return results.first;</span></span>
-<span id="L154"><span class="lineNum">     154</span>              :     } else {</span>
-<span id="L155"><span class="lineNum">     155</span>              :       return null;</span>
-<span id="L156"><span class="lineNum">     156</span>              :     }</span>
-<span id="L157"><span class="lineNum">     157</span>              :   }</span>
-<span id="L158"><span class="lineNum">     158</span>              : </span>
-<span id="L159"><span class="lineNum">     159</span> <span class="tlaGNC tlaBgGNC">           1 :   Future&lt;List&lt;Map&lt;String, dynamic&gt;&gt;&gt; getWatchlistMovies() async {</span></span>
-<span id="L160"><span class="lineNum">     160</span> <span class="tlaGNC">           1 :     final db = await database;</span></span>
-<span id="L161"><span class="lineNum">     161</span> <span class="tlaGNC">           1 :     final List&lt;Map&lt;String, dynamic&gt;&gt; results = await db!.query(_tblWatchlist);</span></span>
-<span id="L162"><span class="lineNum">     162</span>              : </span>
-<span id="L163"><span class="lineNum">     163</span>              :     return results;</span>
-<span id="L164"><span class="lineNum">     164</span>              :   }</span>
-<span id="L165"><span class="lineNum">     165</span>              : </span>
-<span id="L166"><span class="lineNum">     166</span> <span class="tlaGNC">           1 :   Future&lt;int&gt; insertTVWatchlist(TvTable tvTable) async {</span></span>
-<span id="L167"><span class="lineNum">     167</span> <span class="tlaGNC">           1 :     final db = await database;</span></span>
-<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC">           2 :     return await db!.insert(_tblTVWatchlist, tvTable.toJson());</span></span>
-<span id="L169"><span class="lineNum">     169</span>              :   }</span>
-<span id="L170"><span class="lineNum">     170</span>              : </span>
-<span id="L171"><span class="lineNum">     171</span> <span class="tlaGNC">           1 :   Future&lt;int&gt; removeTVWatchlist(TvTable tvTable) async {</span></span>
-<span id="L172"><span class="lineNum">     172</span> <span class="tlaGNC">           1 :     final db = await database;</span></span>
-<span id="L173"><span class="lineNum">     173</span> <span class="tlaGNC">           1 :     return await db!.delete(</span></span>
-<span id="L174"><span class="lineNum">     174</span>              :       _tblTVWatchlist,</span>
-<span id="L175"><span class="lineNum">     175</span>              :       where: 'id = ?',</span>
-<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">           2 :       whereArgs: [tvTable.id],</span></span>
-<span id="L177"><span class="lineNum">     177</span>              :     );</span>
+<span id="L151"><span class="lineNum">     151</span>              :   }</span>
+<span id="L152"><span class="lineNum">     152</span>              : </span>
+<span id="L153"><span class="lineNum">     153</span> <span class="tlaUNC tlaBgUNC">           0 :   Future&lt;Map&lt;String, dynamic&gt;?&gt; getMovieById(int id) async {</span></span>
+<span id="L154"><span class="lineNum">     154</span> <span class="tlaUNC">           0 :     final db = await database;</span></span>
+<span id="L155"><span class="lineNum">     155</span> <span class="tlaUNC">           0 :     final results = await db!.query(</span></span>
+<span id="L156"><span class="lineNum">     156</span>              :       _tblWatchlist,</span>
+<span id="L157"><span class="lineNum">     157</span>              :       where: 'id = ?',</span>
+<span id="L158"><span class="lineNum">     158</span> <span class="tlaUNC">           0 :       whereArgs: [id],</span></span>
+<span id="L159"><span class="lineNum">     159</span>              :     );</span>
+<span id="L160"><span class="lineNum">     160</span>              : </span>
+<span id="L161"><span class="lineNum">     161</span> <span class="tlaUNC">           0 :     if (results.isNotEmpty) {</span></span>
+<span id="L162"><span class="lineNum">     162</span> <span class="tlaUNC">           0 :       return results.first;</span></span>
+<span id="L163"><span class="lineNum">     163</span>              :     } else {</span>
+<span id="L164"><span class="lineNum">     164</span>              :       return null;</span>
+<span id="L165"><span class="lineNum">     165</span>              :     }</span>
+<span id="L166"><span class="lineNum">     166</span>              :   }</span>
+<span id="L167"><span class="lineNum">     167</span>              : </span>
+<span id="L168"><span class="lineNum">     168</span> <span class="tlaGNC tlaBgGNC">           1 :   Future&lt;List&lt;Map&lt;String, dynamic&gt;&gt;&gt; getWatchlistMovies() async {</span></span>
+<span id="L169"><span class="lineNum">     169</span> <span class="tlaGNC">           1 :     final db = await database;</span></span>
+<span id="L170"><span class="lineNum">     170</span> <span class="tlaGNC">           1 :     final List&lt;Map&lt;String, dynamic&gt;&gt; results = await db!.query(_tblWatchlist);</span></span>
+<span id="L171"><span class="lineNum">     171</span>              : </span>
+<span id="L172"><span class="lineNum">     172</span>              :     return results;</span>
+<span id="L173"><span class="lineNum">     173</span>              :   }</span>
+<span id="L174"><span class="lineNum">     174</span>              : </span>
+<span id="L175"><span class="lineNum">     175</span> <span class="tlaGNC">           1 :   Future&lt;int&gt; insertTVWatchlist(TvTable tvTable) async {</span></span>
+<span id="L176"><span class="lineNum">     176</span> <span class="tlaGNC">           1 :     final db = await database;</span></span>
+<span id="L177"><span class="lineNum">     177</span> <span class="tlaGNC">           2 :     return await db!.insert(_tblTVWatchlist, tvTable.toJson());</span></span>
 <span id="L178"><span class="lineNum">     178</span>              :   }</span>
 <span id="L179"><span class="lineNum">     179</span>              : </span>
-<span id="L180"><span class="lineNum">     180</span> <span class="tlaUNC tlaBgUNC">           0 :   Future&lt;Map&lt;String, dynamic&gt;?&gt; getTvSeriesById(int id) async {</span></span>
-<span id="L181"><span class="lineNum">     181</span> <span class="tlaUNC">           0 :     final db = await database;</span></span>
-<span id="L182"><span class="lineNum">     182</span> <span class="tlaUNC">           0 :     final results = await db!.query(</span></span>
+<span id="L180"><span class="lineNum">     180</span> <span class="tlaGNC">           1 :   Future&lt;int&gt; removeTVWatchlist(TvTable tvTable) async {</span></span>
+<span id="L181"><span class="lineNum">     181</span> <span class="tlaGNC">           1 :     final db = await database;</span></span>
+<span id="L182"><span class="lineNum">     182</span> <span class="tlaGNC">           1 :     return await db!.delete(</span></span>
 <span id="L183"><span class="lineNum">     183</span>              :       _tblTVWatchlist,</span>
 <span id="L184"><span class="lineNum">     184</span>              :       where: 'id = ?',</span>
-<span id="L185"><span class="lineNum">     185</span> <span class="tlaUNC">           0 :       whereArgs: [id],</span></span>
+<span id="L185"><span class="lineNum">     185</span> <span class="tlaGNC">           2 :       whereArgs: [tvTable.id],</span></span>
 <span id="L186"><span class="lineNum">     186</span>              :     );</span>
-<span id="L187"><span class="lineNum">     187</span>              : </span>
-<span id="L188"><span class="lineNum">     188</span> <span class="tlaUNC">           0 :     if (results.isNotEmpty) {</span></span>
-<span id="L189"><span class="lineNum">     189</span> <span class="tlaUNC">           0 :       return results.first;</span></span>
-<span id="L190"><span class="lineNum">     190</span>              :     } else {</span>
-<span id="L191"><span class="lineNum">     191</span>              :       return null;</span>
-<span id="L192"><span class="lineNum">     192</span>              :     }</span>
-<span id="L193"><span class="lineNum">     193</span>              :   }</span>
-<span id="L194"><span class="lineNum">     194</span>              : </span>
-<span id="L195"><span class="lineNum">     195</span> <span class="tlaGNC tlaBgGNC">           1 :   Future&lt;List&lt;Map&lt;String, dynamic&gt;&gt;&gt; getWatchListTvSeries() async {</span></span>
-<span id="L196"><span class="lineNum">     196</span> <span class="tlaGNC">           1 :     final db = await database;</span></span>
-<span id="L197"><span class="lineNum">     197</span> <span class="tlaGNC">           1 :     final List&lt;Map&lt;String, dynamic&gt;&gt; results = await db!.query(_tblTVWatchlist);</span></span>
-<span id="L198"><span class="lineNum">     198</span>              : </span>
-<span id="L199"><span class="lineNum">     199</span>              :     return results;</span>
-<span id="L200"><span class="lineNum">     200</span>              :   }</span>
-<span id="L201"><span class="lineNum">     201</span>              : }</span>
+<span id="L187"><span class="lineNum">     187</span>              :   }</span>
+<span id="L188"><span class="lineNum">     188</span>              : </span>
+<span id="L189"><span class="lineNum">     189</span> <span class="tlaUNC tlaBgUNC">           0 :   Future&lt;Map&lt;String, dynamic&gt;?&gt; getTvSeriesById(int id) async {</span></span>
+<span id="L190"><span class="lineNum">     190</span> <span class="tlaUNC">           0 :     final db = await database;</span></span>
+<span id="L191"><span class="lineNum">     191</span> <span class="tlaUNC">           0 :     final results = await db!.query(</span></span>
+<span id="L192"><span class="lineNum">     192</span>              :       _tblTVWatchlist,</span>
+<span id="L193"><span class="lineNum">     193</span>              :       where: 'id = ?',</span>
+<span id="L194"><span class="lineNum">     194</span> <span class="tlaUNC">           0 :       whereArgs: [id],</span></span>
+<span id="L195"><span class="lineNum">     195</span>              :     );</span>
+<span id="L196"><span class="lineNum">     196</span>              : </span>
+<span id="L197"><span class="lineNum">     197</span> <span class="tlaUNC">           0 :     if (results.isNotEmpty) {</span></span>
+<span id="L198"><span class="lineNum">     198</span> <span class="tlaUNC">           0 :       return results.first;</span></span>
+<span id="L199"><span class="lineNum">     199</span>              :     } else {</span>
+<span id="L200"><span class="lineNum">     200</span>              :       return null;</span>
+<span id="L201"><span class="lineNum">     201</span>              :     }</span>
+<span id="L202"><span class="lineNum">     202</span>              :   }</span>
+<span id="L203"><span class="lineNum">     203</span>              : </span>
+<span id="L204"><span class="lineNum">     204</span> <span class="tlaGNC tlaBgGNC">           1 :   Future&lt;List&lt;Map&lt;String, dynamic&gt;&gt;&gt; getWatchListTvSeries() async {</span></span>
+<span id="L205"><span class="lineNum">     205</span> <span class="tlaGNC">           1 :     final db = await database;</span></span>
+<span id="L206"><span class="lineNum">     206</span> <span class="tlaGNC">           1 :     final List&lt;Map&lt;String, dynamic&gt;&gt; results = await db!.query(_tblTVWatchlist);</span></span>
+<span id="L207"><span class="lineNum">     207</span>              : </span>
+<span id="L208"><span class="lineNum">     208</span>              :     return results;</span>
+<span id="L209"><span class="lineNum">     209</span>              :   }</span>
+<span id="L210"><span class="lineNum">     210</span>              : }</span>
         </pre>
               </td>
             </tr>

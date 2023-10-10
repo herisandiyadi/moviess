@@ -65,6 +65,7 @@ class MockGetNowPlayingMovies extends _i1.Mock
           Invocation.getter(#repository),
         ),
       ) as _i2.MovieRepository);
+
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.Movie>>> execute() =>
       (super.noSuchMethod(
@@ -99,6 +100,7 @@ class MockGetPopularMovies extends _i1.Mock implements _i8.GetPopularMovies {
           Invocation.getter(#repository),
         ),
       ) as _i2.MovieRepository);
+
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.Movie>>> execute() =>
       (super.noSuchMethod(
@@ -133,6 +135,7 @@ class MockGetTopRatedMovies extends _i1.Mock implements _i9.GetTopRatedMovies {
           Invocation.getter(#repository),
         ),
       ) as _i2.MovieRepository);
+
   @override
   _i5.Future<_i3.Either<_i6.Failure, List<_i7.Movie>>> execute() =>
       (super.noSuchMethod(
