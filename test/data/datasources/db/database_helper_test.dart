@@ -4,14 +4,13 @@ import 'package:ditonton/data/models/tvseries_table.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-
 import '../../../helpers/test_helper.mocks.dart';
 
 void main() {
   late DatabaseHelper databaseHelper;
   late MockDatabase mockDatabase;
 
-  setUp(() {
+  setUp(() async {
     sqfliteFfiInit();
     mockDatabase = MockDatabase();
     databaseHelper = DatabaseHelper();
