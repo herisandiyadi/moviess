@@ -1,5 +1,6 @@
 import 'package:ditonton/common/constants.dart';
 import 'package:ditonton/common/utils.dart';
+import 'package:ditonton/injection.dart' as di;
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/movie_detail_page.dart';
 import 'package:ditonton/presentation/pages/now_playing_page.dart';
@@ -12,7 +13,6 @@ import 'package:ditonton/presentation/pages/tv/popular_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv/search_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv/top_rated_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv/tv_detail_page.dart';
-import 'package:ditonton/presentation/pages/watchlist_movies_page.dart';
 import 'package:ditonton/presentation/pages/watchlist_page.dart';
 import 'package:ditonton/presentation/provider/movie_detail_notifier.dart';
 import 'package:ditonton/presentation/provider/movie_list_notifier.dart';
@@ -33,7 +33,6 @@ import 'package:ditonton/presentation/widgets/custom_drawer_tv.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ditonton/injection.dart' as di;
 
 void main() {
   di.init();

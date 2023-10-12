@@ -4,7 +4,6 @@ import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/tv.dart';
 import 'package:ditonton/domain/usecases/tvseries/get_tv_detail.dart';
 import 'package:ditonton/domain/usecases/tvseries/get_tv_recomendations.dart';
-import 'package:ditonton/domain/usecases/tvseries/get_watchlist_tv.dart';
 import 'package:ditonton/domain/usecases/tvseries/get_watchlist_tv_status.dart';
 import 'package:ditonton/domain/usecases/tvseries/remove_watchlist_tv.dart';
 import 'package:ditonton/domain/usecases/tvseries/save_watchlist_tv.dart';
