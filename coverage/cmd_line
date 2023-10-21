@@ -1,0 +1,1 @@
+genhtml coverage/lcov.info -o coverage --no-function-coverage -s -p /Users/mac/Documents/Projects/Trainings/flutter/expert/submission/a199-flutter-expert-project/coverage

@@ -5,6 +5,7 @@ import 'package:core/data/datasources/tv_local_data_source.dart';
 import 'package:core/data/datasources/tv_remote_datasource.dart';
 import 'package:core/data/repositories/movie_repository_impl.dart';
 import 'package:core/data/repositories/tvseries_repository_impl.dart';
+import 'package:core/utils/network_connection.dart';
 
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:http/http.dart' as http;
@@ -189,7 +190,7 @@ void init() {
   locator.registerLazySingleton<DatabaseHelper>(() => DatabaseHelper());
 
   // external
-  locator.registerLazySingleton(() => http.Client());
+  locator.registerLazySingleton(() => HttpSSLPinning.client);
   locator.registerLazySingleton(() => DataConnectionChecker());
 
   //network info

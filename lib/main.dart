@@ -1,3 +1,6 @@
+import 'package:core/utils/network_connection.dart';
+import 'package:ditonton/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/detail_movie/detail_movie_bloc.dart';
 import 'package:movie/presentation/bloc/now_playing_movies/now_playing_movies_bloc.dart';
@@ -15,7 +18,6 @@ import 'package:core/presentation/widgets/custom_drawer_movie.dart';
 import 'package:ditonton/injection.dart' as di;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:about/about_page.dart';
 import 'package:core/core.dart';
 import 'package:tv/presentation/bloc/detail_tv/detail_tv_bloc.dart';
@@ -30,7 +32,12 @@ import 'package:tv/presentation/pages/tv/search_tv_page.dart';
 import 'package:tv/presentation/pages/tv/top_rated_tv_page.dart';
 import 'package:tv/presentation/pages/tv/tv_detail_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await HttpSSLPinning.init();
   di.init();
   runApp(MyApp());
 }
@@ -38,7 +45,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (context) => di.locator<NowPlayingMoviesBloc>(),
