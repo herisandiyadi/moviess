@@ -8,7 +8,6 @@ import 'package:core/data/repositories/tvseries_repository_impl.dart';
 import 'package:core/utils/network_connection.dart';
 
 import 'package:data_connection_checker/data_connection_checker.dart';
-import 'package:http/http.dart' as http;
 import 'package:get_it/get_it.dart';
 import 'package:core/core.dart';
 import 'package:movie/domain/repositories/movie_repository.dart';
