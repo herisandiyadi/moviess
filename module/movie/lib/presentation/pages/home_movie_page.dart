@@ -59,6 +59,7 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildSubHeading(
+                key: Key('seemore-nowplaying'),
                 title: 'Now Playing',
                 onTap: () =>
                     Navigator.pushNamed(context, NowPlayingPage.ROUTE_NAME),
@@ -125,7 +126,8 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
     );
   }
 
-  Row _buildSubHeading({required String title, required Function() onTap}) {
+  Row _buildSubHeading(
+      {required String title, required Function() onTap, Key? key}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -134,11 +136,17 @@ class _HomeMoviePageState extends State<HomeMoviePage> {
           style: kHeading6,
         ),
         InkWell(
+          key: key,
           onTap: onTap,
           child: const Padding(
             padding: EdgeInsets.all(8.0),
             child: Row(
-              children: [Text('See More'), Icon(Icons.arrow_forward_ios)],
+              children: [
+                Text(
+                  'See More',
+                ),
+                Icon(Icons.arrow_forward_ios)
+              ],
             ),
           ),
         ),

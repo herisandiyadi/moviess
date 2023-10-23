@@ -146,8 +146,14 @@ class DetailContent extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   isAddedWatchlist
-                                      ? const Icon(Icons.check)
-                                      : const Icon(Icons.add),
+                                      ? const Icon(
+                                          Icons.check,
+                                          key: const Key('remove_watchlist'),
+                                        )
+                                      : const Icon(
+                                          Icons.add,
+                                          key: const Key('add_watchlist'),
+                                        ),
                                   const Text('Watchlist'),
                                 ],
                               ),
@@ -267,7 +273,10 @@ class DetailContent extends StatelessWidget {
             backgroundColor: kRichBlack,
             foregroundColor: Colors.white,
             child: IconButton(
-              icon: const Icon(Icons.arrow_back),
+              icon: const Icon(
+                Icons.arrow_back,
+                key: const Key('backtoHome'),
+              ),
               onPressed: () {
                 Navigator.pop(context);
               },

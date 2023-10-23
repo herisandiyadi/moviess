@@ -15,7 +15,10 @@ class Homepage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Moviess'),
-          leading: const Icon(Icons.menu),
+          leading: const Icon(
+            Icons.menu,
+            key: const Key('icon_menu'),
+          ),
           centerTitle: true,
           bottom: const TabBar(
             tabs: [

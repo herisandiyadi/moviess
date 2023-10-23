@@ -45,7 +45,10 @@ class _CustomDrawerState extends State<CustomDrawer>
           onTap: toggle,
         ),
         ListTile(
-          leading: const Icon(Icons.save_alt),
+          leading: const Icon(
+            Icons.save_alt,
+            key: const Key('towatchlistPage'),
+          ),
           title: const Text('Watchlist'),
           onTap: () async {
             toggle();
