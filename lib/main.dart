@@ -1,5 +1,6 @@
 import 'package:core/utils/network_connection.dart';
 import 'package:ditonton/firebase_options.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie/presentation/bloc/detail_movie/detail_movie_bloc.dart';
@@ -95,6 +96,16 @@ class MyApp extends StatelessWidget {
         home: CustomDrawer(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
+          print(settings.name);
+          final FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+          analytics.logEvent(
+            name: 'pages',
+            parameters: {
+              'firebase_screen': settings.name,
+              'page_name': settings.name,
+            },
+          );
+
           switch (settings.name) {
             case '/home':
               return MaterialPageRoute(builder: (_) => CustomDrawer());
