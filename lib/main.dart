@@ -96,7 +96,6 @@ class MyApp extends StatelessWidget {
         home: CustomDrawer(),
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
-          print(settings.name);
           final FirebaseAnalytics analytics = FirebaseAnalytics.instance;
           analytics.logEvent(
             name: 'pages',
